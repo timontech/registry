@@ -1,0 +1,41 @@
+ARG UBUNTU_VERSION=22.04
+FROM ubuntu:${UBUNTU_VERSION}
+
+ENV VERSION=1.2.4
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+ADD https://github.com/mikefarah/yq/releases/download/v4.25.3/yq_linux_amd64 /usr/local/bin/yq
+ADD https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip /environment/terraform.zip
+
+COPY files/Makefile /environment/Makefile
+COPY files/run.sh /environment/run.sh
+COPY files/terraformrc /environment/.terraformrc
+COPY files/timon-backend.hcl /environment/timon-backend.hcl
+COPY files/timon-backend.tf /environment/timon-backend.tf
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        dumb-init \
+        git \
+        make \
+        rsync \
+        unzip \
+    && chmod +x /usr/local/bin/yq \
+    && unzip -d /environment /environment/terraform.zip \
+    && rm -f /environment/terraform.zip \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /blueprint /input /output /processing /import /export
+
+WORKDIR /environment
+
+VOLUME /blueprint /input /output /processing /import /export
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+LABEL "org.opencontainers.image.documentation"="https://docs.timon.tech" \
+      "org.opencontainers.image.licenses"="ASL 2.0" \
+      "org.opencontainers.image.source"="https://github.com/timontech/environments" \
+      "org.opencontainers.image.url"="https://www.osism.tech" \
+      "org.opencontainers.image.vendor"="OSISM GmbH"
