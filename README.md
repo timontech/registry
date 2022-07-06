@@ -1,7 +1,7 @@
 # Timon environments
 
 ```
-timonadm environment import https://github.com/timontech/environments terraform/base
+timonctl environment import https://github.com/timontech/environments terraform/base
 ```
 
 ## terraform/base
