@@ -1,6 +1,7 @@
 ---
 environment:
   author: Christian Berendt
+  index: timontech/environments
   name: terraform/base
   image: harbor.services.osism.tech/timon/terraform/base
   command: /environment/run.sh
