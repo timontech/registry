@@ -18,25 +18,25 @@ init:
 	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) init $(PARAM_BACKEND_CONFIG) -upgrade
 
 validate:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) validate $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) validate $(PARAMS)
 
 prepare:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) plan $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) plan $(PARAMS)
 
 create:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) apply -auto-approve $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) apply -auto-approve $(PARAMS)
 
 reconcile:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) apply -auto-approve $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) apply -auto-approve $(PARAMS)
 
 destroy:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) destroy -auto-approve $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) destroy -auto-approve $(PARAMS)
 
 refresh:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) refresh $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) refresh $(PARAMS)
 
 status:
-	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) show $(PARAMS) -json
+	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) show $(PARAMS)
 
 export:
 	@cp -rf /processing/.terraform /export
