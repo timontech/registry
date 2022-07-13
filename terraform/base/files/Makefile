@@ -11,7 +11,7 @@ export TF_DATA_DIR=/processing/.terraform
 import:
 	@cp /environment/timon-backend.tf /processing
 	@rsync -av /blueprint/$(BLUEPRINT)/ /processing/
-	@rsync -av /import/ /processing/
+	@rsync -av /export/ /processing/
 	@rsync -av /input/ /processing/
 
 init:

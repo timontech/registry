@@ -24,11 +24,11 @@ RUN apt-get update \
     && unzip -d /environment /environment/terraform.zip \
     && rm -f /environment/terraform.zip \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /import /export
+    && mkdir -p /blueprint /input /output /processing /export
 
 WORKDIR /environment
 
-VOLUME /blueprint /input /output /processing /import /export
+VOLUME /blueprint /input /output /processing /export
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
