@@ -24,6 +24,7 @@ jobs:
       matrix:
         version:
           - 1.2.4
+          - 1.2.5
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
