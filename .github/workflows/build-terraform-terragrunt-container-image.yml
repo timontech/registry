@@ -1,0 +1,60 @@
+---
+name: Build terraform terragrunt container image
+
+"on":
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+  push:
+    paths:
+      - .github/workflows/build-terraform-terragrunt-container-image.yml
+      - terraform/terragrunt/**
+    branches:
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/build-terraform-terragrunt-container-image.yml
+      - terraform/terragrunt/**
+
+jobs:
+
+  build-terraform-terragrunt-container-image:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - 1.2.5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        if: github.ref == 'refs/heads/main'
+
+      - name: Build container image
+        run: scripts/build.sh
+        env:
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+          IMAGE: terraform/terragrunt
+          REPOSITORY: timon/terraform/terragrunt
+          VERSION: ${{ matrix.version }}
+
+      - name: Push container image
+        run: |
+          scripts/push.sh
+        env:
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+          IMAGE: terraform/terragrunt
+          REPOSITORY: timon/terraform/terragrunt
+          VERSION: ${{ matrix.version }}
+        if: |
+          github.repository == 'timontech/environments' &&
+          github.ref == 'refs/heads/main'

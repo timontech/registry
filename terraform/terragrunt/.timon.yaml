@@ -1,0 +1,15 @@
+---
+environment:
+  author: Christian Berendt
+  repository: timontech/environments
+  name: terraform/base
+  image: harbor.services.osism.tech/timon/terraform/base
+  command: /environment/run.sh
+  versions:
+    - 1.2.4
+    - 1.2.5
+  description: |
+    Terraform enables you to safely and predictably create, change, and
+    improve infrastructure. It is an open source tool that codifies APIs
+    into declarative configuration files that can be shared amongst team
+    members, treated as code, edited, reviewed, and versioned.
