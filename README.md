@@ -6,7 +6,7 @@ timonctl environment import https://github.com/timontech/environments terraform/
 
 ## Kubernetes
 
-* kubectl/base
+* kubernetes/kubectl
 
 ## Terraform
 
