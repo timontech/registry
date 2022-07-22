@@ -20,7 +20,7 @@ init:
 validate:
 	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) validate $(PARAMS)
 
-prepare:
+check:
 	@$(BINARY_TERRAFORM) $(PARAM_CHDIR) plan $(PARAMS)
 
 create:

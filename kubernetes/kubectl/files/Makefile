@@ -13,7 +13,7 @@ init:
 validate:
 	@$(BINARY_KUBECTL)
 
-prepare:
+check:
 	@$(BINARY_KUBECTL)
 
 create:
