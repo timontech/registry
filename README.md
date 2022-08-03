@@ -1,5 +1,12 @@
 # Timon environments
 
+Timon efficiently manages your cloud infrastructures 🚀
+
+| :memo: | Timon is a work in progress. Features will evolve over time and there may be breaking changes between releases. |
+|-|:-|
+
+## Usage
+
 ```
 timonctl environment import https://github.com/timontech/environments terraform/base
 ```
