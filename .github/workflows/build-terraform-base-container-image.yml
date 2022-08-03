@@ -25,6 +25,7 @@ jobs:
         version:
           - 1.2.4
           - 1.2.5
+          - 1.2.6
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
