@@ -11,6 +11,10 @@ Timon efficiently manages your cloud infrastructures 🚀
 timonctl environment import https://github.com/timontech/environments terraform/base
 ```
 
+## Ansible
+
+* ansible/base
+
 ## Kubernetes
 
 * kubernetes/kubectl

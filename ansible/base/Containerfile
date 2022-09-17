@@ -1,0 +1,37 @@
+ARG UBUNTU_VERSION=22.04
+FROM ubuntu:${UBUNTU_VERSION}
+
+ENV VERSION=6.4.0
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+COPY files/Makefile /environment/Makefile
+COPY files/ansible.cfg /environment/ansible.cfg
+COPY files/requirements.yml /environment/requirements.yml
+COPY files/run.sh /environment/run.sh
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        dumb-init \
+        git \
+        make \
+        python3-pip \
+        rsync \
+    && python3 -m pip install --no-cache-dir "ansible==${VERSION}" \
+    && mkdir -p /environment/.ansible/roles \
+    && ansible-galaxy collection install -p /environment/.ansible/roles -r /environment/requirements.yml \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /blueprint /input /output /processing /export
+
+WORKDIR /environment
+
+VOLUME /blueprint /input /output /processing /export
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+LABEL "org.opencontainers.image.documentation"="https://docs.timon.tech" \
+      "org.opencontainers.image.licenses"="ASL 2.0" \
+      "org.opencontainers.image.source"="https://github.com/timontech/environments" \
+      "org.opencontainers.image.url"="https://www.osism.tech" \
+      "org.opencontainers.image.vendor"="OSISM GmbH"

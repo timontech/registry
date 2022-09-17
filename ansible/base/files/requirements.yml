@@ -1,0 +1,16 @@
+---
+collections:
+  - name: ansible.netcommon
+    source: https://galaxy.ansible.com
+  - name: ansible.posix
+    source: https://galaxy.ansible.com
+  - name: community.general
+    source: https://galaxy.ansible.com
+  - name: community.network
+    source: https://galaxy.ansible.com
+  - name: debops.debops
+    source: https://galaxy.ansible.com
+  - name: netbox.netbox
+    source: https://galaxy.ansible.com
+  - name: openstack.cloud
+    source: https://galaxy.ansible.com
