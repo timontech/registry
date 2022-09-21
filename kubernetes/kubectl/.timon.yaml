@@ -1,0 +1,13 @@
+---
+environment:
+  author: Christian Berendt
+  repository_server: https://github.com
+  repository: timontech/environments
+  name: kubernetes/kubectl
+  image: harbor.services.osism.tech/timon/kubernetes/kubectl
+  command: /environment/run.sh
+  versions:
+    - 1.24.3
+  description: |
+    Tool for communicating with a Kubernetes cluster's control plane,
+    using the Kubernetes API.
