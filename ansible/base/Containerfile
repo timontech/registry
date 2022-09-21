@@ -7,20 +7,32 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 COPY files/Makefile /environment/Makefile
 COPY files/ansible.cfg /environment/ansible.cfg
+COPY files/hosts /environment/inventory/hosts
+COPY files/requirements.txt /environment/requirements.txt
 COPY files/requirements.yml /environment/requirements.yml
 COPY files/run.sh /environment/run.sh
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         dumb-init \
+        gcc \
         git \
         make \
+        python3-dev  \
         python3-pip \
         rsync \
     && python3 -m pip install --no-cache-dir "ansible==${VERSION}" \
+    && python3 -m pip install --no-cache-dir -r /environment/requirements.txt \
     && mkdir -p /environment/.ansible/roles \
     && ansible-galaxy collection install -p /environment/.ansible/roles -r /environment/requirements.yml \
+    && apt-get remove -y \
+        build-essential \
+        gcc \
+        python3-dev  \
+    && apt-get install -y --no-install-recommends \
+        make \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /blueprint /input /output /processing /export
 

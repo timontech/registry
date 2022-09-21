@@ -1,11 +1,13 @@
 # Makefile
 
 BINARY_ANSIBLE = ansible
+BINARY_ANSIBLE_PLAYBOOK = ansible-playbook
 
 export ANSIBLE_ROLES_PATH=/processing/.ansible/roles
 
 import:
 	@cp /environment/ansible.cfg /processing
+	@cp -r /environment/inventory /processing
 	@cp -r /environment/.ansible /processing
 	@cp /environment/requirements.yml /processing
 	@rsync -av /blueprint/$(BLUEPRINT)/ /processing/
@@ -13,30 +15,30 @@ import:
 	@rsync -av /input/ /processing/
 
 init:
-	@echo
+	@echo NOT IMPLEMENTED
 
 validate:
-	@echo
+	@echo NOT IMPLEMENTED
 
 check:
-	@echo
+	@echo NOT IMPLEMENTED
 
 create:
-	@echo
+	@$(BINARY_ANSIBLE_PLAYBOOK) /processing/playbook-create.yml
 
 reconcile:
-	@echo
+	@$(BINARY_ANSIBLE_PLAYBOOK) /processing/playbook-reconcile.yml
 
 destroy:
-	@echo
+	@$(BINARY_ANSIBLE_PLAYBOOK) /processing/playbook-destroy.yml
 
 refresh:
-	@echo
+	@echo NOT IMPLEMENTED
 
 status:
-	@echo
+	@echo NOT IMPLEMENTED
 
 export:
-	@echo
+	@cp -r /processing/* /export
 
 PHONY: import init validate prepare create reconcile destroy refresh status export
