@@ -1,9 +1,8 @@
 ARG VERSION=1.2.7
 FROM harbor.services.osism.tech/timon/terraform/base:${VERSION}
 
-ENV DEBIAN_FRONTEND=noninteractive
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 COPY files/main.tf /environment/main.tf
+COPY files/run.sh /environment/run.sh
+
 RUN /environment/terraform init \
     && rm /environment/.terraform/terraform.tfstate
