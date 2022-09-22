@@ -9,6 +9,7 @@ PARAM_BACKEND_CONFIG = -backend-config=/environment/timon-backend.hcl
 export TF_DATA_DIR=/processing/.terraform
 
 import:
+	@if [  -d /environment/.terraform ]; then rsync -av /environment/.terraform /processing; rsync -av /environment/.terraform.lock.hcl /environment; fi
 	@cp /environment/timon-backend.tf /processing
 	@rsync -av /blueprint/$(BLUEPRINT)/ /processing/
 	@rsync -av /export/ /processing/

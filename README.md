@@ -9,6 +9,10 @@ Timon efficiently manages your cloud infrastructures 🚀
 
 ```
 timonctl environment import https://github.com/timontech/environments terraform/base
+timonctl environment list
+timonctl environment edit terraform/base
+timonctl environment update terraform/base
+timonctl environment delete terraform/base
 ```
 
 ## Ansible
@@ -36,4 +40,6 @@ It is an open source tool that codifies APIs into declarative configuration file
 be shared amongst team members, treated as code, edited, reviewed, and versioned.
 
 * terraform/base
+* terraform/azure
+* terraform/openstack
 * terraform/terragrunt
