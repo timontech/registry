@@ -6,7 +6,6 @@ ARG TF_PLUGIN_CACHE_DIR=/cache/plugins
 COPY files/main.tf /environment/main.tf
 
 RUN /environment/terraform init \
-    && mv /environment/.terraform/providers /environment \
     && rm -rf /environment/.terraform \
     && rm /environment/.terraform.lock.hcl \
     && rm /environment/main.tf
