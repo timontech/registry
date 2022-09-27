@@ -10,3 +10,4 @@ environment:
     - version: 1.2.7
   description: |
     terraform/base environment with pre-installed OpenStack provider plugin
+  inputs: []
