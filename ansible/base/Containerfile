@@ -34,11 +34,11 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         make \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export
+    && mkdir -p /blueprint /input /output /processing /export /cache
 
 WORKDIR /environment
 
-VOLUME /blueprint /input /output /processing /export
+VOLUME /blueprint /input /output /processing /export /cache
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 

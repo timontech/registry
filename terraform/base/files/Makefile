@@ -7,8 +7,10 @@ PARAM_BACKEND_CONFIG = -backend-config=/environment/timon-backend.hcl
 
 # https://www.terraform.io/cli/config/environment-variables
 export TF_DATA_DIR=/processing/.terraform
+export TF_CLI_CONFIG_FILE=/processing/timon.tfrc
 
 import:
+	@cp /environment/timon.tfrc /processing/timon.tfrc
 	@cp /environment/timon-backend.tf /processing
 	@rsync -av /blueprint/$(BLUEPRINT)/ /processing/
 	@rsync -av /export/ /processing/

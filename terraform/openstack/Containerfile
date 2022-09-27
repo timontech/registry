@@ -1,8 +1,12 @@
 ARG VERSION=1.2.7
 FROM harbor.services.osism.tech/timon/terraform/base:${VERSION}
 
+ARG TF_PLUGIN_CACHE_DIR=/cache/plugins
+
 COPY files/main.tf /environment/main.tf
-COPY files/run.sh /environment/run.sh
 
 RUN /environment/terraform init \
-    && rm /environment/.terraform/terraform.tfstate
+    && mv /environment/.terraform/providers /environment \
+    && rm -rf /environment/.terraform \
+    && rm /environment/.terraform.lock.hcl \
+    && rm /environment/main.tf

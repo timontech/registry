@@ -9,9 +9,9 @@ ADD https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_lin
 
 COPY files/Makefile /environment/Makefile
 COPY files/run.sh /environment/run.sh
-COPY files/terraformrc /environment/.terraformrc
 COPY files/timon-backend.hcl /environment/timon-backend.hcl
 COPY files/timon-backend.tf /environment/timon-backend.tf
+COPY files/timon.tfrc /environment/timon.tfrc
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -24,11 +24,11 @@ RUN apt-get update \
     && unzip -d /environment /environment/terraform.zip \
     && rm -f /environment/terraform.zip \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export
+    && mkdir -p /blueprint /input /output /processing /export /cache
 
 WORKDIR /environment
 
-VOLUME /blueprint /input /output /processing /export
+VOLUME /blueprint /input /output /processing /export /cache
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
