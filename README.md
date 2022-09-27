@@ -24,6 +24,7 @@ language that approaches plain English, using SSH, with no agents to install
 on remote systems.
 
 * ansible/base
+* ansible/terraform
 
 ## Kubernetes
 

@@ -1,0 +1,23 @@
+ARG VERSION=6.4.0
+ARG TERRAFORM_VERSION=1.2.7
+FROM harbor.services.osism.tech/timon/terraform/base:${TERRAFORM_VERSION} as terraform
+FROM harbor.services.osism.tech/timon/ansible/base:${VERSION} as ansible
+
+ARG ANSIBLE_TERRAFORM_INVENTORY_VERSION=0.3.1
+
+ENV TF_STATE=/processing/.terraform
+ADD https://github.com/jtopjian/ansible-terraform-inventory/releases/download/v${ANSIBLE_TERRAFORM_INVENTORY_VERSION}/ansible-terraform-inventory_${ANSIBLE_TERRAFORM_INVENTORY_VERSION}_linux_amd64.zip /environment
+COPY --from=terraform /environment/terraform /environment/terraform
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        unzip \
+    && unzip -j /environment/ansible-terraform-inventory_${ANSIBLE_TERRAFORM_INVENTORY_VERSION}_linux_amd64.zip ansible-terraform-inventory_v${ANSIBLE_TERRAFORM_INVENTORY_VERSION} -d /environment \
+    && ln -s /environment/ansible-terraform-inventory_v${ANSIBLE_TERRAFORM_INVENTORY_VERSION} /environment/ansible-terraform-inventory \
+    && rm -f /environment/inventory/hosts \
+    && ln -s /environment/ansible-terraform-inventory /environment/inventory/hosts \
+    && ln -s /environment/terraform /usr/local/bin/terraform \
+    && rm -f /environment/ansible-terraform-inventory_${ANSIBLE_TERRAFORM_INVENTORY_VERSION}_linux_amd64.zip \
+    && apt-get remove -y \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
