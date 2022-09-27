@@ -7,11 +7,11 @@ environment:
   image: harbor.services.osism.tech/timon/terraform/base
   command: /environment/run.sh
   versions:
-    - 1.2.4
-    - 1.2.5
-    - 1.2.6
-    - 1.2.7
-    - 1.3.0
+    - version: 1.2.4
+    - version: 1.2.5
+    - version: 1.2.6
+    - version: 1.2.7
+    - version: 1.3.0
   description: |
     Terraform enables you to safely and predictably create, change, and
     improve infrastructure. It is an open source tool that codifies APIs

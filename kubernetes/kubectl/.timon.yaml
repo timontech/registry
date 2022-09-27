@@ -7,9 +7,9 @@ environment:
   image: harbor.services.osism.tech/timon/kubernetes/kubectl
   command: /environment/run.sh
   versions:
-    - 1.24.3
-    - 1.24.4
-    - 1.25.0
+    - version: 1.24.3
+    - version: 1.24.4
+    - version: 1.25.0
   description: |
     Tool for communicating with a Kubernetes cluster's control plane,
     using the Kubernetes API.
