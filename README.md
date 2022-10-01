@@ -1,21 +1,26 @@
-# Timon environments
+# Timon registry
 
 Timon efficiently manages your cloud infrastructures 🚀
 
 | :memo: | Timon is a work in progress. Features will evolve over time and there may be breaking changes between releases. |
 |-|:-|
 
-## Usage
+## Blueprints
 
 ```
-timonctl environment import https://github.com/timontech/environments terraform/base
-timonctl environment list
-timonctl environment edit terraform/base
-timonctl environment update terraform/base
-timonctl environment delete terraform/base
+timonctl blueprint import terraform/openstack/minimal
 ```
 
-## Ansible
+* ansible/openstack/minimal
+* terraform/openstack/minimal
+
+## Environments
+
+```
+timonctl environment import terraform/base
+```
+
+### Ansible
 
 Ansible is a radically simple IT automation platform that makes your
 applications and systems easier to deploy and maintain. Automate everything
@@ -26,7 +31,7 @@ on remote systems.
 * ansible/base
 * ansible/terraform
 
-## Kubernetes
+### Kubernetes
 
 Kubernetes, also known as K8s, is an open source system for managing containerized
 applications across multiple hosts. It provides basic mechanisms for deployment,
@@ -34,7 +39,7 @@ maintenance, and scaling of applications.
 
 * kubernetes/kubectl
 
-## Terraform
+### Terraform
 
 Terraform enables you to safely and predictably create, change, and improve infrastructure.
 It is an open source tool that codifies APIs into declarative configuration files that can

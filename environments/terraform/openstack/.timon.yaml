@@ -1,0 +1,13 @@
+---
+environment:
+  author: Christian Berendt
+  repository_server: https://github.com
+  repository: timontech/registry
+  name: terraform/openstack
+  image: harbor.services.osism.tech/timon/terraform/openstack
+  command: /environment/run.sh
+  versions:
+    - version: 1.2.7
+  description: |
+    terraform/base environment with pre-installed OpenStack provider plugin
+  inputs: []

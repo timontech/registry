@@ -21,7 +21,7 @@ if [[ -n $DOCKER_REGISTRY ]]; then
     REPOSITORY="$DOCKER_REGISTRY/$REPOSITORY"
 fi
 
-pushd $IMAGE
+pushd environments/$IMAGE
 docker buildx build \
     --load \
     --build-arg "VERSION=$VERSION" \

@@ -3,18 +3,16 @@ name: Build terraform openstack container image
 
 "on":
   workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * *"
   push:
     paths:
       - .github/workflows/build-terraform-openstack-container-image.yml
-      - terraform/openstack/**
+      - environments/terraform/openstack/**
     branches:
       - main
   pull_request:
     paths:
       - .github/workflows/build-terraform-openstack-container-image.yml
-      - terraform/openstack/**
+      - environments/terraform/openstack/**
 
 jobs:
 
@@ -56,5 +54,5 @@ jobs:
           REPOSITORY: timon/terraform/openstack
           VERSION: ${{ matrix.version }}
         if: |
-          github.repository == 'timontech/environments' &&
+          github.repository == 'timontech/registry' &&
           github.ref == 'refs/heads/main'

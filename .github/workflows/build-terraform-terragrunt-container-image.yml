@@ -3,18 +3,16 @@ name: Build terraform terragrunt container image
 
 "on":
   workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * *"
   push:
     paths:
       - .github/workflows/build-terraform-terragrunt-container-image.yml
-      - terraform/terragrunt/**
+      - environments/terraform/terragrunt/**
     branches:
       - main
   pull_request:
     paths:
       - .github/workflows/build-terraform-terragrunt-container-image.yml
-      - terraform/terragrunt/**
+      - environments/terraform/terragrunt/**
 
 jobs:
 
@@ -59,5 +57,5 @@ jobs:
           REPOSITORY: timon/terraform/terragrunt
           VERSION: ${{ matrix.version }}
         if: |
-          github.repository == 'timontech/environments' &&
+          github.repository == 'timontech/registry' &&
           github.ref == 'refs/heads/main'
