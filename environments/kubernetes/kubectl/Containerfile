@@ -16,6 +16,7 @@ RUN apt-get update \
         dumb-init \
         git \
         make \
+        openssh-client \
         rsync \
     && chmod +x /environment/kubectl \
     && rm -rf /var/lib/apt/lists/* \

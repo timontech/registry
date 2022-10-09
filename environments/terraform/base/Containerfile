@@ -19,6 +19,7 @@ RUN apt-get update \
         dumb-init \
         git \
         make \
+        openssh-client \
         rsync \
         unzip \
     && unzip -d /environment /environment/terraform.zip \
