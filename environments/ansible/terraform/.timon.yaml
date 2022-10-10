@@ -47,3 +47,4 @@ environment:
       description: |
         Private SSH key to access the instances defined in the Terraform state
       visibility: private
+  outputs: []

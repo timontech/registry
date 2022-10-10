@@ -14,3 +14,4 @@ environment:
     Tool for communicating with a Kubernetes cluster's control plane,
     using the Kubernetes API.
   inputs: []
+  outputs: []

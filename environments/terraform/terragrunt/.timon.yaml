@@ -18,3 +18,4 @@ environment:
     into declarative configuration files that can be shared amongst team
     members, treated as code, edited, reviewed, and versioned.
   inputs: []
+  outputs: []

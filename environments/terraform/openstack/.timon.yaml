@@ -11,3 +11,4 @@ environment:
   description: |
     terraform/base environment with pre-installed OpenStack provider plugin
   inputs: []
+  outputs: []

@@ -15,3 +15,4 @@ environment:
     language that approaches plain English, using SSH, with no agents to install
     on remote systems.
   inputs: []
+  outputs: []
