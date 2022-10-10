@@ -1,0 +1,25 @@
+---
+name: Validate environments
+
+"on":
+  push:
+    paths:
+      - .github/workflows/validate-environments.yml
+      - environments/schema.yaml
+      - environments/**/.timon.yml
+    branches:
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/validate-environments.yml
+      - environments/schema.yaml
+      - environments/**/.timon.yml
+
+jobs:
+  validate-environments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - run: pip3 install yamale ruamel.yaml
+      - run: find environments -name .timon.yaml | xargs -n1 yamale -s environments/schema.yaml -p ruamel
