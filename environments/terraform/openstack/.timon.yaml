@@ -7,7 +7,7 @@ environment:
   image: harbor.services.osism.tech/timon/terraform/openstack
   command: /environment/run.sh
   versions:
-    - version: 1.2.7
+    - version: 1.3.2
   description: |
     terraform/base environment with pre-installed OpenStack provider plugin
   inputs: []
