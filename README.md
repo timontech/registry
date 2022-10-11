@@ -46,3 +46,11 @@ be shared amongst team members, treated as code, edited, reviewed, and versioned
 * terraform/azure
 * terraform/openstack
 * terraform/terragrunt
+
+### OSISM
+
+OSISM is developing a solution for the holistic management of sustainable, sovereign
+software-defined cloud infrastructures. OSISM is used by the Sovereign Cloud Stack (SCS)
+to manage the core infrastructure services.
+
+* osism/testbed
