@@ -36,6 +36,10 @@ maintenance, and scaling of applications.
 
 * kubernetes/kubectl
 
+### Python
+
+* python/base
+
 ### Terraform
 
 Terraform enables you to safely and predictably create, change, and improve infrastructure.
