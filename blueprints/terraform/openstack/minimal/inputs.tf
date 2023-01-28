@@ -15,7 +15,7 @@ variable "public_network" {
 
 variable "image" {
   type    = string
-  default = "Ubuntu 20.04"
+  default = "Ubuntu 22.04"
 }
 
 variable "flavor" {
