@@ -1,6 +1,6 @@
-# Timon registry
+# The Cloudsphereregistry
 
-Timon efficiently manages your cloud infrastructures 🚀
+The Cloudsphere efficiently manages your cloud infrastructures 🚀
 
 ## Blueprints
 
