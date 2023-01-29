@@ -2,9 +2,9 @@
 environment:
   author: Christian Berendt
   repository_server: https://github.com
-  repository: timontech/registry
+  repository: thecloudsphere/registry
   name: python/base
-  image: harbor.services.osism.tech/timon/python/base
+  image: harbor.services.osism.tech/thecloudsphere/python/base
   command: /environment/run.sh
   versions:
     - version: "3.10"

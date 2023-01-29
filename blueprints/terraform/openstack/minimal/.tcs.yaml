@@ -2,7 +2,7 @@
 blueprint:
   author: Christian Berendt
   repository_server: https://github.com
-  repository: timontech/registry
+  repository: thecloudsphere/registry
   name: terraform/openstack/minimal
   versions:
     - version: main
@@ -11,7 +11,7 @@ blueprint:
   schedule: "*/15 * * * *"
 
   environment:
-    repository: timontech/registry
+    repository: thecloudsphere/registry
     name: terraform/openstack
     version: 1.3.2
 
@@ -40,7 +40,7 @@ blueprint:
       destination:
         path: TF_VAR_prefix
         type: environment
-      default: timon
+      default: tcs
       required: false
       description: |
         Prefix for the create resources to be used.

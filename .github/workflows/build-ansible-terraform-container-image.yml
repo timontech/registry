@@ -42,7 +42,7 @@ jobs:
         env:
           DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
           IMAGE: ansible/terraform
-          REPOSITORY: timon/ansible/terraform
+          REPOSITORY: thecloudsphere/ansible/terraform
           VERSION: ${{ matrix.version }}
 
       - name: Push container image
@@ -51,8 +51,8 @@ jobs:
         env:
           DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
           IMAGE: ansible/terraform
-          REPOSITORY: timon/ansible/terraform
+          REPOSITORY: thecloudsphere/ansible/terraform
           VERSION: ${{ matrix.version }}
         if: |
-          github.repository == 'timontech/registry' &&
+          github.repository == 'thecloudsphere/registry' &&
           github.ref == 'refs/heads/main'

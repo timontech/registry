@@ -2,9 +2,9 @@
 environment:
   author: Christian Berendt
   repository_server: https://github.com
-  repository: timontech/registry
+  repository: thecloudsphere/registry
   name: ansible/terraform
-  image: harbor.services.osism.tech/timon/ansible/terraform
+  image: harbor.services.osism.tech/thecloudsphere/ansible/terraform
   command: /environment/run.sh
   versions:
     - version: 6.4.0
@@ -41,7 +41,7 @@ environment:
 
     - name: private_key
       destination:
-        path: id_rsa.timon
+        path: id_rsa.tcs
         type: file
       required: true
       description: |

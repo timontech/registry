@@ -7,7 +7,7 @@
     state: present
     flavor: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_flavor', default='SCS-1V:4:10') }}"
     image: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_image', default='Ubuntu 22.04') }}"
-    prefix: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_prefix', default='timon') }}"
+    prefix: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_prefix', default='tcs') }}"
     provider_cloud: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_provider_cloud', default='openstack') }}"
     public: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_public_network', default='external') }}"
 

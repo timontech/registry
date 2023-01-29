@@ -1,4 +1,4 @@
-resource "openstack_compute_secgroup_v2" "timon" {
+resource "openstack_compute_secgroup_v2" "tcs" {
   name        = "${var.prefix}-secgroup"
   description = "minimal security group"
 
@@ -24,13 +24,13 @@ resource "openstack_compute_secgroup_v2" "timon" {
   }
 }
 
-resource "openstack_networking_network_v2" "timon" {
+resource "openstack_networking_network_v2" "tcs" {
   name = "${var.prefix}-network"
 }
 
-resource "openstack_networking_subnet_v2" "timon" {
+resource "openstack_networking_subnet_v2" "tcs" {
   name            = "${var.prefix}-subnet"
-  network_id      = openstack_networking_network_v2.timon.id
+  network_id      = openstack_networking_network_v2.tcs.id
   cidr            = "192.168.16.0/24"
   ip_version      = 4
 
@@ -40,35 +40,35 @@ resource "openstack_networking_subnet_v2" "timon" {
   }
 }
 
-resource "openstack_compute_keypair_v2" "timon" {
+resource "openstack_compute_keypair_v2" "tcs" {
   name = "${var.prefix}-keypair"
 }
 
-resource "openstack_compute_instance_v2" "timon" {
+resource "openstack_compute_instance_v2" "tcs" {
   name            = "${var.prefix}-instance"
   image_name      = var.image
   flavor_name     = var.flavor
-  key_pair        = openstack_compute_keypair_v2.timon.name
+  key_pair        = openstack_compute_keypair_v2.tcs.name
   security_groups = ["default", "${var.prefix}-secgroup"]
   depends_on      = [
-    openstack_networking_subnet_v2.timon,
-    openstack_compute_secgroup_v2.timon,
-    openstack_compute_keypair_v2.timon
+    openstack_networking_subnet_v2.tcs,
+    openstack_compute_secgroup_v2.tcs,
+    openstack_compute_keypair_v2.tcs
   ]
   network {
     name = "${var.prefix}-network"
   }
 }
 
-resource "openstack_networking_floatingip_v2" "timon" {
+resource "openstack_networking_floatingip_v2" "tcs" {
   pool       = var.public_network
   depends_on = [openstack_networking_router_interface_v2.router_interface]
 }
 
-resource "openstack_compute_floatingip_associate_v2" "timon" {
-  floating_ip = openstack_networking_floatingip_v2.timon.address
-  instance_id = "${openstack_compute_instance_v2.timon.id}"
-  depends_on  = [openstack_compute_instance_v2.timon]
+resource "openstack_compute_floatingip_associate_v2" "tcs" {
+  floating_ip = openstack_networking_floatingip_v2.tcs.address
+  instance_id = "${openstack_compute_instance_v2.tcs.id}"
+  depends_on  = [openstack_compute_instance_v2.tcs]
 }
 
 resource "openstack_networking_router_v2" "router" {
@@ -78,5 +78,5 @@ resource "openstack_networking_router_v2" "router" {
 
 resource "openstack_networking_router_interface_v2" "router_interface" {
   router_id = openstack_networking_router_v2.router.id
-  subnet_id = openstack_networking_subnet_v2.timon.id
+  subnet_id = openstack_networking_subnet_v2.tcs.id
 }

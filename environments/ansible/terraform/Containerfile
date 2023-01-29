@@ -1,7 +1,7 @@
 ARG VERSION=6.4.0
 ARG TERRAFORM_VERSION=1.2.7
-FROM harbor.services.osism.tech/timon/terraform/base:${TERRAFORM_VERSION} as terraform
-FROM harbor.services.osism.tech/timon/ansible/base:${VERSION} as ansible
+FROM harbor.services.osism.tech/thecloudsphere/terraform/base:${TERRAFORM_VERSION} as terraform
+FROM harbor.services.osism.tech/thecloudsphere/ansible/base:${VERSION} as ansible
 
 ARG ANSIBLE_TERRAFORM_INVENTORY_VERSION=0.3.1
 

@@ -2,9 +2,9 @@
 environment:
   author: Christian Berendt
   repository_server: https://github.com
-  repository: timontech/registry
+  repository: thecloudsphere/registry
   name: kubernetes/kubectl
-  image: harbor.services.osism.tech/timon/kubernetes/kubectl
+  image: harbor.services.osism.tech/thecloudsphere/kubernetes/kubectl
   command: /environment/run.sh
   versions:
     - version: 1.24.3

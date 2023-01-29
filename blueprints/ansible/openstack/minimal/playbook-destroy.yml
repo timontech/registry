@@ -5,7 +5,7 @@
 
   vars:
     state: absent
-    prefix: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_prefix', default='timon') }}"
+    prefix: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_prefix', default='tcs') }}"
     provider_cloud: "{{ lookup('ansible.builtin.env', 'ANSIBLE_VAR_provider_cloud', default='openstack') }}"
 
   tasks:

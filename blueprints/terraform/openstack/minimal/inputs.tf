@@ -1,6 +1,6 @@
 variable "prefix" {
   type    = string
-  default = "timon"
+  default = "tcs"
 }
 
 variable "provider_cloud" {

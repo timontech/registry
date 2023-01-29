@@ -1,5 +1,5 @@
 ARG VERSION=1.2.5
-FROM harbor.services.osism.tech/timon/terraform/base:${VERSION}
+FROM harbor.services.osism.tech/thecloudsphere/terraform/base:${VERSION}
 
 ARG TERRAGRUNT_VERSION=0.38.12
 

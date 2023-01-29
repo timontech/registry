@@ -9,9 +9,9 @@ ADD https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_lin
 
 COPY files/Makefile /environment/Makefile
 COPY files/run.sh /environment/run.sh
-COPY files/timon-backend.hcl /environment/timon-backend.hcl
-COPY files/timon-backend.tf /environment/timon-backend.tf
-COPY files/timon.tfrc /environment/timon.tfrc
+COPY files/tcs-backend.hcl /environment/tcs-backend.hcl
+COPY files/tcs-backend.tf /environment/tcs-backend.tf
+COPY files/tcs.tfrc /environment/tcs.tfrc
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -33,8 +33,8 @@ VOLUME /blueprint /input /output /processing /export /cache
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-LABEL "org.opencontainers.image.documentation"="https://timontech.github.io/documentation/" \
+LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.github.io/documentation/" \
       "org.opencontainers.image.licenses"="ASL 2.0" \
-      "org.opencontainers.image.source"="https://github.com/timontech/registry" \
+      "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
       "org.opencontainers.image.url"="https://www.osism.tech" \
       "org.opencontainers.image.vendor"="OSISM GmbH"

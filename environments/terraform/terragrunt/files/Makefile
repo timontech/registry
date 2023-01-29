@@ -3,13 +3,13 @@
 BINARY_TERRAFORM = /environment/terragrunt
 
 PARAM_CHDIR = -chdir=/processing
-PARAM_BACKEND_CONFIG = -backend-config=/environment/timon-backend.hcl
+PARAM_BACKEND_CONFIG = -backend-config=/environment/tcs-backend.hcl
 
 # https://www.terraform.io/cli/config/environment-variables
 export TF_DATA_DIR=/processing/.terraform
 
 import:
-	@cp /environment/timon-backend.tf /processing
+	@cp /environment/tcs-backend.tf /processing
 	@rsync -av /blueprint/$(BLUEPRINT_PATH)/ /processing/
 	@rsync -av /export/ /processing/
 	@rsync -av /input/ /processing/

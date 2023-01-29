@@ -6,14 +6,14 @@ name: Validate environments
     paths:
       - .github/workflows/validate-environments.yml
       - environments/schema.yaml
-      - environments/**/.timon.yml
+      - environments/**/.tcs.yml
     branches:
       - main
   pull_request:
     paths:
       - .github/workflows/validate-environments.yml
       - environments/schema.yaml
-      - environments/**/.timon.yml
+      - environments/**/.tcs.yml
 
 jobs:
   validate-environments:
@@ -22,4 +22,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
       - run: pip3 install yamale ruamel.yaml
-      - run: find environments -name .timon.yaml | xargs -n1 yamale -s environments/schema.yaml -p ruamel
+      - run: find environments -name .tcs.yaml | xargs -n1 yamale -s environments/schema.yaml -p ruamel
