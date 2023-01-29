@@ -5,7 +5,7 @@ The Cloudsphere efficiently manages your cloud infrastructures 🚀
 ## Blueprints
 
 ```
-timonctl blueprint import terraform/openstack/minimal
+tcsctl blueprint import terraform/openstack/minimal
 ```
 
 * ansible/openstack/minimal
@@ -14,7 +14,7 @@ timonctl blueprint import terraform/openstack/minimal
 ## Environments
 
 ```
-timonctl environment import terraform/base
+tcsctl environment import terraform/base
 ```
 
 ### Ansible
