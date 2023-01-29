@@ -1,5 +1,5 @@
-ARG VERSION=6.4.0
-ARG TERRAFORM_VERSION=1.2.7
+ARG VERSION=7.1.0
+ARG TERRAFORM_VERSION=1.3.7
 FROM harbor.services.osism.tech/thecloudsphere/terraform/base:${TERRAFORM_VERSION} as terraform
 FROM harbor.services.osism.tech/thecloudsphere/ansible/base:${VERSION} as ansible
 

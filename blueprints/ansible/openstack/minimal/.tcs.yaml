@@ -13,7 +13,7 @@ blueprint:
   environment:
     repository: thecloudsphere/registry
     name: ansible/base
-    version: 6.4.0
+    version: 7.1.0
 
   inputs:
     - name: clouds.yaml

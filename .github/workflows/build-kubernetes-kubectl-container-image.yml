@@ -21,9 +21,9 @@ jobs:
     strategy:
       matrix:
         version:
-          - 1.24.5
-          - 1.24.6
-          - 1.25.2
+          - 1.24.10
+          - 1.25.6
+          - 1.26.1
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

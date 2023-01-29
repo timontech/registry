@@ -13,7 +13,7 @@ blueprint:
   environment:
     repository: thecloudsphere/registry
     name: terraform/openstack
-    version: 1.3.2
+    version: 1.3.7
 
   inputs:
     - name: clouds.yaml
