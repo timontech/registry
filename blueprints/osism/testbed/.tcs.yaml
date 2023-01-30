@@ -24,6 +24,19 @@ blueprint:
       makefile_processing: /processing/terraform/Makefile
       # makefile_post_processing:
 
+  control:
+    type: ssh
+    arguments:
+      - name: destination
+        value: "{{ outputs.address }}"
+        type: string
+      - name: identity_file
+        value: "{{ outputs.private_key }}"
+        type: file
+      - name: user
+        value: ubuntu
+        type: string
+
   inputs:
     - name: clouds.yaml
       destination:

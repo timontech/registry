@@ -1,4 +1,4 @@
-# The Cloudsphereregistry
+# The Cloudsphere registry
 
 The Cloudsphere efficiently manages your cloud infrastructures 🚀
 
