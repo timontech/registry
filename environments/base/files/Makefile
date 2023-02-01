@@ -1,10 +1,6 @@
 # Makefile
 
 import:
-	@cp /environment/ansible.cfg /processing
-	@cp -r /environment/inventory /processing
-	@cp -r /environment/.ansible /processing
-	@cp /environment/requirements.yml /processing
 	@rsync -av /blueprint/$(BLUEPRINT_PATH)/ /processing/
 	@rsync -av /export/ /processing/
 	@rsync -av /input/ /processing/
