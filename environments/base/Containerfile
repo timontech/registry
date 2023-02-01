@@ -1,0 +1,30 @@
+ARG UBUNTU_VERSION=22.04
+FROM ubuntu:${UBUNTU_VERSION}
+
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+COPY files/run.sh /environment/run.sh
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        dumb-init \
+        git \
+        make \
+        openssh-client \
+        rsync \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /blueprint /input /output /processing /export /cache /environment
+
+WORKDIR /environment
+
+VOLUME /blueprint /input /output /processing /export /cache
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.io/documentation/" \
+      "org.opencontainers.image.licenses"="ASL 2.0" \
+      "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
+      "org.opencontainers.image.url"="https://www.osism.tech" \
+      "org.opencontainers.image.vendor"="OSISM GmbH"
