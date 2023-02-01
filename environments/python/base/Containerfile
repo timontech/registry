@@ -17,7 +17,7 @@ RUN apt-get update \
         openssh-client \
         rsync \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export /cache
+    && mkdir -p /blueprint /input /output /processing /export /cache /environment
 
 WORKDIR /environment
 
@@ -25,7 +25,7 @@ VOLUME /blueprint /input /output /processing /export /cache
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.github.io/documentation/" \
+LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.io" \
       "org.opencontainers.image.licenses"="ASL 2.0" \
       "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
       "org.opencontainers.image.url"="https://www.osism.tech" \

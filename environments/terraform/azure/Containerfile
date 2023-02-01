@@ -1,4 +1,4 @@
-ARG VERSION=1.2.7
+ARG VERSION=1.3.7
 FROM harbor.services.osism.tech/thecloudsphere/terraform/base:${VERSION}
 
 ARG TF_PLUGIN_CACHE_DIR=/cache/plugins

@@ -1,35 +1,10 @@
-ARG UBUNTU_VERSION=22.04
-FROM ubuntu:${UBUNTU_VERSION}
+ARG BASE_VERSION=latest
+FROM harbor.services.osism.tech/thecloudsphere/base:${BASE_VERSION}
 
 ENV VERSION=1.26.1
-ENV DEBIAN_FRONTEND=noninteractive
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ADD https://dl.k8s.io/release/v${VERSION}/bin/linux/amd64/kubectl /environment/kubectl
 
 COPY files/Makefile /environment/Makefile
-COPY files/run.sh /environment/run.sh
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        dumb-init \
-        git \
-        make \
-        openssh-client \
-        rsync \
-    && chmod +x /environment/kubectl \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export /cache
-
-WORKDIR /environment
-
-VOLUME /blueprint /input /output /processing /export /cache
-
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-
-LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.github.io/documentation/" \
-      "org.opencontainers.image.licenses"="ASL 2.0" \
-      "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
-      "org.opencontainers.image.url"="https://www.osism.tech" \
-      "org.opencontainers.image.vendor"="OSISM GmbH"
+RUN chmod +x /environment/kubectl

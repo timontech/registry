@@ -1,29 +1,20 @@
-ARG UBUNTU_VERSION=22.04
-FROM ubuntu:${UBUNTU_VERSION}
+ARG BASE_VERSION=latest
+FROM harbor.services.osism.tech/thecloudsphere/base:${BASE_VERSION}
 
-ENV VERSION=6.4.0
-ENV DEBIAN_FRONTEND=noninteractive
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV VERSION=7.1.0
 
 COPY files/Makefile /environment/Makefile
 COPY files/ansible.cfg /environment/ansible.cfg
 COPY files/hosts /environment/inventory/hosts
 COPY files/requirements.txt /environment/requirements.txt
 COPY files/requirements.yml /environment/requirements.yml
-COPY files/run.sh /environment/run.sh
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
-        ca-certificates \
-        dumb-init \
         gcc \
-        git \
-        make \
-        openssh-client \
         python3-dev  \
         python3-pip \
-        rsync \
     && python3 -m pip install --no-cache-dir "ansible==${VERSION}" \
     && python3 -m pip install --no-cache-dir -r /environment/requirements.txt \
     && mkdir -p /environment/.ansible/roles \
@@ -34,17 +25,4 @@ RUN apt-get update \
         python3-dev  \
     && apt-get install -y --no-install-recommends \
         make \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export /cache
-
-WORKDIR /environment
-
-VOLUME /blueprint /input /output /processing /export /cache
-
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-
-LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.github.io/documentation/" \
-      "org.opencontainers.image.licenses"="ASL 2.0" \
-      "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
-      "org.opencontainers.image.url"="https://www.osism.tech" \
-      "org.opencontainers.image.vendor"="OSISM GmbH"
+    && rm -rf /var/lib/apt/lists/*

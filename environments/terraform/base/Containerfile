@@ -1,40 +1,20 @@
-ARG UBUNTU_VERSION=22.04
-FROM ubuntu:${UBUNTU_VERSION}
+ARG BASE_VERSION=latest
+FROM harbor.services.osism.tech/thecloudsphere/base:${BASE_VERSION}
 
-ENV VERSION=1.2.6
-ENV DEBIAN_FRONTEND=noninteractive
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV VERSION=1.3.7
 
 ADD https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip /environment/terraform.zip
 
 COPY files/Makefile /environment/Makefile
-COPY files/run.sh /environment/run.sh
 COPY files/tcs-backend.hcl /environment/tcs-backend.hcl
 COPY files/tcs-backend.tf /environment/tcs-backend.tf
 COPY files/tcs.tfrc /environment/tcs.tfrc
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        dumb-init \
-        git \
-        make \
-        openssh-client \
-        rsync \
         unzip \
     && unzip -d /environment /environment/terraform.zip \
     && rm -f /environment/terraform.zip \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /blueprint /input /output /processing /export /cache
-
-WORKDIR /environment
-
-VOLUME /blueprint /input /output /processing /export /cache
-
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-
-LABEL "org.opencontainers.image.documentation"="https://thecloudsphere.github.io/documentation/" \
-      "org.opencontainers.image.licenses"="ASL 2.0" \
-      "org.opencontainers.image.source"="https://github.com/thecloudsphere/registry" \
-      "org.opencontainers.image.url"="https://www.osism.tech" \
-      "org.opencontainers.image.vendor"="OSISM GmbH"
+    && apt-get remove -y \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
