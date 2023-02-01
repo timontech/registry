@@ -4,6 +4,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+COPY files/Makefile /environment/Makefile
 COPY files/run.sh /environment/run.sh
 
 RUN apt-get update \
