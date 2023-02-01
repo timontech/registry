@@ -3,7 +3,7 @@ ARG TERRAFORM_VERSION=1.3.7
 FROM harbor.services.osism.tech/thecloudsphere/terraform/base:${TERRAFORM_VERSION} as terraform
 FROM harbor.services.osism.tech/thecloudsphere/ansible/base:${VERSION} as ansible
 
-ARG ANSIBLE_TERRAFORM_INVENTORY_VERSION=0.3.1
+ARG ANSIBLE_TERRAFORM_INVENTORY_VERSION=0.4.0
 
 ENV TF_STATE=/processing/.terraform
 ADD https://github.com/jtopjian/ansible-terraform-inventory/releases/download/v${ANSIBLE_TERRAFORM_INVENTORY_VERSION}/ansible-terraform-inventory_${ANSIBLE_TERRAFORM_INVENTORY_VERSION}_linux_amd64.zip /environment
