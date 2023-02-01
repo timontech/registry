@@ -7,7 +7,7 @@ environment:
   image: harbor.services.osism.tech/thecloudsphere/ansible/base
   command: /environment/run.sh
   versions:
-    - version: 6.4.0
+    - version: 7.1.0
   description: |
     Ansible is a radically simple IT automation platform that makes your
     applications and systems easier to deploy and maintain. Automate everything

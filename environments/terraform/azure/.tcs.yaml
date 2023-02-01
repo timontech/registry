@@ -7,7 +7,7 @@ environment:
   image: harbor.services.osism.tech/thecloudsphere/terraform/azure
   command: /environment/run.sh
   versions:
-    - version: 1.3.2
+    - version: 1.3.7
   description: |
     terraform/base environment with pre-installed Azure provider plugin
   inputs: []

@@ -7,7 +7,7 @@ environment:
   image: harbor.services.osism.tech/thecloudsphere/ansible/terraform
   command: /environment/run.sh
   versions:
-    - version: 6.4.0
+    - version: 7.1.0
   description: |
     ansible/base environment with prepared Terraform dynamic inventory plugin
   inputs:
