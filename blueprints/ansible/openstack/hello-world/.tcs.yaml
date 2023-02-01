@@ -3,7 +3,7 @@ blueprint:
   author: Christian Berendt
   repository_server: https://github.com
   repository: thecloudsphere/registry
-  name: ansible/openstack/minimal
+  name: ansible/openstack/hello-world
   versions:
     - version: main
   description: |

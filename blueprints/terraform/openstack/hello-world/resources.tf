@@ -1,6 +1,6 @@
 resource "openstack_compute_secgroup_v2" "tcs" {
   name        = "${var.prefix}-secgroup"
-  description = "minimal security group"
+  description = "hello-world security group"
 
   rule {
     cidr        = "0.0.0.0/0"

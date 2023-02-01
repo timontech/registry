@@ -5,11 +5,11 @@ The Cloudsphere efficiently manages your cloud infrastructures 🚀
 ## Blueprints
 
 ```
-tcsctl blueprint import terraform/openstack/minimal
+tcsctl blueprint import terraform/openstack/hello-world
 ```
 
-* ansible/openstack/minimal
-* terraform/openstack/minimal
+* ansible/openstack/hello-world
+* terraform/openstack/hello-world
 
 ## Environments
 

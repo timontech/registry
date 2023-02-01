@@ -1,5 +1,5 @@
 ---
-- name: Create openstack/minimal
+- name: Create openstack/hello-world
   hosts: localhost
   connection: local
 
