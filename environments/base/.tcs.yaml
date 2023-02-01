@@ -1,0 +1,13 @@
+---
+environment:
+  author: Christian Berendt
+  repository_server: https://github.com
+  repository: thecloudsphere/registry
+  name: base
+  image: harbor.services.osism.tech/thecloudsphere/base
+  command: /environment/run.sh
+  versions:
+    - version: latest
+  description: Base environment
+  inputs: []
+  outputs: []
