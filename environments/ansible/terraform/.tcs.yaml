@@ -9,7 +9,8 @@ environment:
   versions:
     - version: 7.1.0
   description: |
-    ansible/base environment with prepared Terraform dynamic inventory plugin
+    Ansible environment with prepared Terraform dynamic inventory plugin
+
   inputs:
     - name: ansible remote user
       destination:
@@ -47,4 +48,14 @@ environment:
       description: |
         Private SSH key to access the instances defined in the Terraform state
       visibility: private
+
+    - name: ansible private key file
+      destination:
+        path: ANSIBLE_PRIVATE_KEY_FILE
+        type: environment
+      default: /processing/id_rsa.tcs
+      required: false
+      description: |
+        Path to the private key files used by Ansible
+
   outputs: []
