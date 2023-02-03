@@ -1,9 +1,8 @@
 # Makefile
 
 BINARY_ANSIBLE = ansible
+BINARY_ANSIBLE_GALAXY = ansible-galaxy
 BINARY_ANSIBLE_PLAYBOOK = ansible-playbook
-
-export ANSIBLE_ROLES_PATH=/processing/.ansible/roles
 
 import:
 	@cp /environment/ansible.cfg /processing
@@ -15,7 +14,8 @@ import:
 	@rsync -av /input/ /processing/
 
 init:
-	@echo NOT IMPLEMENTED
+	@if [ ! -f /processing/requiremenst.yml ]; then $(BINARY_ANSIBLE_GALAXY) role install -v -f -r /ansible/requirements.yml -p /processing/.ansible/roles; fi
+	@if [ ! -f /processing/requiremenst.yml ]; then $(BINARY_ANSIBLE_GALAXY) collection install -v -f -r /ansible/requirements.yml -p /processing/.ansible/collections; fi
 
 validate:
 	@echo NOT IMPLEMENTED
