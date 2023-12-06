@@ -20,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
       - run: pip3 install yamale ruamel.yaml
       - run: find environments -name .tcs.yaml | xargs -n1 yamale -s environments/schema.yaml -p ruamel
