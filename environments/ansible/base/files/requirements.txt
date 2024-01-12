@@ -1,2 +1,2 @@
 # > 0.61.0 not yet working with the openstack collection
-openstacksdk==1.4.0
+openstacksdk==2.1.0
